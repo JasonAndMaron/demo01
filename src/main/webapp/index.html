@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+<p id="test">Hello World!</p>
+<button type="button" id="clickHere">onclick test</button>
+<div>index page</div>
+<div>wellcome to this code world!</div>
+<div>Let's roll!</div>
+</body>
+
+<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#clickHere").click(function () {
+            $.ajax({
+                // url:"/testSpringMVC/user/showUser.do",
+                url:"/testDemo01/user/getHeader",
+                async:true,
+                type:"GET",
+                // data:{"id":1},
+                success:function(result){
+                    console.log(result);
+                    $("div").html(result);
+                }});
+        })
+    });
+    // function selectUser() {
+    //     var xmlhttp = new XMLHttpRequest();
+    //     xmlhttp.onreadystatechange = function () {
+    //     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    //     document.getElementById("test").innerHTML = xmlhttp.responseText;
+    //     }
+    // }
+    //     xmlhttp.open("POST", "user/showUser.do", true);
+    //     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    //     xmlhttp.send("id=1");
+    // }
+</script>
+</html>
