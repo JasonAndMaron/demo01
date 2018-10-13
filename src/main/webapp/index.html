@@ -7,9 +7,14 @@
 <body>
 <p id="test">Hello World!</p>
 <button type="button" id="clickHere">onclick test</button>
-<div>index page</div>
-<div>wellcome to this code world!</div>
-<div>Let's roll!</div>
+<pre>index page</pre>
+<pre>wellcome to this code world!</pre>
+<button type="button" id="clickMe">click me</button>
+<p >test</p>
+<p >test</p>
+<p >test</p>
+<p >test</p>
+<pre>Let's roll!</pre>
 </body>
 
 <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
@@ -17,14 +22,30 @@
     $(document).ready(function(){
         $("#clickHere").click(function () {
             $.ajax({
-                // url:"/testSpringMVC/user/showUser.do",
-                url:"/testDemo01/user/getHeader",
+                // url:"/testDemo01/user/showUser.do",
+                url:"/testDemo01/code/selectCode/" + 1,
+                // url:"/testDemo01/user/getHeader",
                 async:true,
                 type:"GET",
                 // data:{"id":1},
                 success:function(result){
                     console.log(result);
-                    $("div").html(result);
+                    $("pre").html(JSON.stringify(result,null,4));
+                }});
+        })
+
+        $("#clickMe").click(function () {
+            $.ajax({
+                // url:"/testDemo01/user/showUser.do",
+                url:"/testDemo01/code/jojo",
+                // url:"/testDemo01/user/getHeader",
+                async:true,
+                type:"GET",
+                // data:{"id":1},
+                success:function(result){
+                    console.log(result);
+                    // $("p").html(result);
+                    $("pre").html(JSON.stringify(result,null,4));
                 }});
         })
     });

@@ -21,7 +21,7 @@ public class UserController {
     @Resource
     private IUserService userService;
 
-    @RequestMapping("/showUser.do")
+    @RequestMapping(value = "/showUser.do",method= RequestMethod.GET)
     public void selectUser(HttpServletRequest request, HttpServletResponse response){
 
         System.out.println("HttpServletRequest request is : " + request);
@@ -39,8 +39,9 @@ public class UserController {
         System.out.println("After encoding...httpServletRequest getRequestedSessionId is : " + request.getRequestedSessionId());
         System.out.println("After encoding...httpServletRequest getRequestURL is : " + request.getRequestURL());
         System.out.println("After encoding...httpServletRequest getSession is : " + request.getSession());
-        int userId = Integer.parseInt(request.getParameter("id"));
-        User user = this.userService.selectUser(userId);
+        int objectId = Integer.parseInt(request.getParameter("id"));
+        System.out.println("objectId : " + objectId);
+        User user = this.userService.selectUser(objectId);
         ObjectMapper mapper = new ObjectMapper();
         try {
             response.getWriter().write(mapper.writeValueAsString(user));
@@ -74,8 +75,6 @@ public class UserController {
             @CookieValue("JSESSIONID") String cookie2*/){
         //@RequestHeader将http请求头信息赋值给形参
         //@CookieValue直接将请求头中的cookie的值赋值给形参
-        System.out.println("start to access /getHeader method!!");
-        System.out.println("start to access /getHeader method!!");
         System.out.println("start to access /getHeader method!!");
         JSONObject mav=new JSONObject();
         mav.put("host", host);

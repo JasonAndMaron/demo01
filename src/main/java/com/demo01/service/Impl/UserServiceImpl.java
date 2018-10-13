@@ -1,7 +1,8 @@
-package com.demo01.service;
+package com.demo01.service.Impl;
 
 import com.demo01.dao.IUserDao;
 import com.demo01.model.User;
+import com.demo01.service.IUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
