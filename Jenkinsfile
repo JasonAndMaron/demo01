@@ -31,7 +31,7 @@ pipeline {
             deleteDir() /* clean up our workspace */
         }
         success {
-             echo "Something is wrong with ${env.BUILD_URL}"
+              echo 'Failed Pipeline: Javavavavaavavava'
         }
         unstable {
             echo 'I am unstable :/'
