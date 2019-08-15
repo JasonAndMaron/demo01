@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+        BUILD_URL = 'http://localhost:8080/job/mypro/job/master/3/console'
+    }
 
     stages {
         stage('Build') {
@@ -25,7 +31,9 @@ pipeline {
             deleteDir() /* clean up our workspace */
         }
         success {
-            echo 'I succeeeded!'
+            mail to: 'fangkemeng@wafersystems.com',
+             subject: "Failed Pipeline: Javavavavaavavava",
+             body: "Something is wrong with ${env.BUILD_URL}"
         }
         unstable {
             echo 'I am unstable :/'
