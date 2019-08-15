@@ -31,7 +31,7 @@ pipeline {
             deleteDir() /* clean up our workspace */
         }
         success {
-            mail to: 'fangkemeng@wafersystems.com',
+            mail to: 'Jasoniscoming@163.com',
              subject: "Failed Pipeline: Javavavavaavavava",
              body: "Something is wrong with ${env.BUILD_URL}"
         }
